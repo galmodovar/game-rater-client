@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { useHistory, useParams } from 'react-router-dom'
-import { createReview, getReviews } from './GameManager.js'
+import { createReview, createRating } from './GameManager.js'
 
 export const ReviewForm = () => {
     const { gameId } = useParams()
     const history = useHistory()
-    const [review, setReview] = useState("")
-    const [game, setGame] = useState([])
+    const [ review, setReview ] = useState("")
 
 
 
@@ -22,9 +21,6 @@ export const ReviewForm = () => {
 
         createReview(newReview).then(history.push(`/games/${gameId}`))
     }
-
-
-
 
     return (
         <form className="gameForm">
